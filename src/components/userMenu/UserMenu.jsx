@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { DivBox, Button, Mail } from "./UserMenuStyled";
 import { getUserName } from '../../redux/selectors';
 
