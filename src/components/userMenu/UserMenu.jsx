@@ -4,7 +4,7 @@ import { getUserName } from '../../redux/selectors';
 
 
 export default function UserMenu() {
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const name = useSelector(getUserName);
 
     return(
