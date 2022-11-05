@@ -28,6 +28,8 @@ export const removeContacts = async(id) => {
     const { data } = await axios.post(`/users/signup`, newUser);
     return data;
   };
+
+
   
   export const loginUser = async(credentials) => {
     const user = { ...credentials };
