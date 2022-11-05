@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from 'nanoid';
-import { register } from 'redux/operations';
+import { login } from 'redux/operations';
 
 
 export default function LoginForm() {
@@ -26,12 +26,13 @@ export default function LoginForm() {
         }
       };
 
+
     const handleSubmit = (e) => {
         e.preventDefault();        
-        dispatch(register({email, password}));
+        dispatch(login({email, password}));
         setEmail('');
         setPassword('');
-        };
+    };
 
 
 
@@ -44,8 +45,8 @@ export default function LoginForm() {
                     <input
                       type="email"
                       name="email"
-                      pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                      title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                      // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                      // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                       required
                       onChange={handleInputChange}
                       value={email}    
@@ -57,8 +58,8 @@ export default function LoginForm() {
                     <input
                       type="password"
                       name="password"
-                      pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                      title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                      // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+                      // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                       required
                       onChange={handleInputChange}
                       value={password}  

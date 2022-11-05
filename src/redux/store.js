@@ -34,14 +34,15 @@ export const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
   getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
+    serializableCheck: false,
   }),
+  // middleware: getDefaultMiddleware =>
+  // getDefaultMiddleware({
+  //   serializableCheck: {
+  //     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  //   },
+  // }),
  });
 
 
-// export default store;
 export const persistor = persistStore(store);
-
-
