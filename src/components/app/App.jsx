@@ -8,7 +8,7 @@ import HomePage from "../homePage/HomePage";
 import Layout from "components/layout/Layout";
 import { DivBox } from "./AppStyled";
 import { getIsLoading } from "redux/selectors";
-import { refreshUser } from "redux/operations";
+import { refresh } from "redux/operations";
 
 const Register = lazy(() => import('../../pages/register/RegisterPage'));
 const Login = lazy(() => import('../../pages/login/LoginPage'));
@@ -20,7 +20,7 @@ export function App () {
 
 
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refresh());
   }, [dispatch]);
 
     return (

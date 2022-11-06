@@ -1,8 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import * as api from "../components/api/phonebook"
+// import * as api from "../components/api/phonebook"
 
 
+axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
 const token = {
     set(token) {
@@ -14,13 +15,14 @@ const token = {
 };
 
 
+
 export const register = createAsyncThunk(
     'auth/register',
     async (credentials, { rejectWithValue }) => {
         try {
-            const { data } = await api.registerUser(credentials);
+            const { data } = await axios.post('/users/signup', credentials);
             token.set(data.token);
-            return data;
+            return data; 
         } catch (error) {
           return rejectWithValue(error);
         }
@@ -28,12 +30,11 @@ export const register = createAsyncThunk(
 );
 
 
-
 export const login = createAsyncThunk(
     'auth/login',
     async (credentials, { rejectWithValue }) => {
         try {
-            const { data } = await api.loginUser(credentials);
+            const { data } = await axios.post('/users/login', credentials);
             token.set(data.token);
             return data;
         } catch (error) {
@@ -41,14 +42,13 @@ export const login = createAsyncThunk(
         }
     }
 );
-
-
+  
 
 export const logout = createAsyncThunk(
     'auth/logout',
     async (_, { rejectWithValue }) => {
         try {
-            await api.logoutUser();
+            await axios.post('/users/logout');
             token.unset();
         } catch (error) {
             return rejectWithValue(error);
@@ -56,13 +56,14 @@ export const logout = createAsyncThunk(
     }
 );
 
-  
+
+
 
 export const fetchContacts = createAsyncThunk(
     "contacts/fetchAll",
     async(_, thunkApi) => {
         try {
-            const data = await api.getContacts();
+            const { data } = await axios.get('/contacts/');
             return data;
         } catch (error) {
             return thunkApi.rejectWithValue(error);
@@ -71,11 +72,12 @@ export const fetchContacts = createAsyncThunk(
 );
 
 
+
 export const addContact = createAsyncThunk(
     "contacts/addContact",
     async({ name, number }, { rejectWithValue }) => {
         try {
-            const result = await api.addContacts(name, number);
+            const result = await axios.post('/contacts/', {name, number});
             return result;
         } catch (error) {
             return rejectWithValue(error);
@@ -84,12 +86,11 @@ export const addContact = createAsyncThunk(
 );
 
 
-
 export const deleteContact = createAsyncThunk(
     "contacts/deleteContact",
     async(id, thunkApi) => {
         try {
-            const items = await api.removeContacts(id);
+            const items = await axios.delete(`/contacts/${id}`);
             return items;
         } catch (error) {
             return thunkApi.rejectWithValue(error);
@@ -98,11 +99,10 @@ export const deleteContact = createAsyncThunk(
 );  
  
 
-export const refreshUser = createAsyncThunk(
-    'auth/refreshUser',
+export const refresh = createAsyncThunk(
+    'auth/refresh',
     async (_, thunkAPI) => {
       const state = thunkAPI.getState();
-      console.log(state);
       const tokenFresh = state.auth.token;
   
       if (tokenFresh === null) {
@@ -116,4 +116,5 @@ export const refreshUser = createAsyncThunk(
         return thunkAPI.rejectWithValue(error);
       }
     }
-  );
+  );  
+ 
