@@ -11,34 +11,6 @@ const initialState = {
     isRefreshing: false,
     error: '',
 };
- 
-// const authSlice = createSlice({
-//     name: 'auth',
-//     initialState,
-//     extraReducers: {
-//         [register.fulfilled](state, { payload }){
-//             state.user = payload.user;
-//             state.token = payload.token;
-//             state.isLoged = true;
-//         }, 
-//         [login.fulfilled](state, { payload }){
-//             state.user = payload.user;
-//             state.token = payload.token;
-//             state.isLoged = true;
-//         },
-//         [logout.fulfilled](state, _){
-//             state.user = {name: null, email: null};
-//             state.token = null;
-//             state.isLoged = false;
-//         },
-//         [refreshUser.fulfilled](state, { payload }){
-//             state.user = payload;
-//             state.isLoged = true;
-//         },
-//     },
-// })
-
-// export const authReducer = authSlice.reducer;
 
 const authSlice = createSlice({
     name: 'auth',
@@ -54,8 +26,7 @@ const authSlice = createSlice({
       },
       [register.rejected](state, action) {
         state.error = action.payload;
-      },
-  
+      },  
       [login.pending](state) {
         state.error = '';
       },
@@ -63,11 +34,10 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoged = true;
-      },
+      },    
       [login.rejected](state, action) {
         state.error = action.payload;
-      },
-  
+      },  
       [logout.pending](state) {
         state.error = '';
       },
@@ -76,7 +46,6 @@ const authSlice = createSlice({
         state.isLoged = false;
         state.token = null;
       },
-  
       [refresh.pending](state) {
         state.isRefreshing = true;
         state.error = '';

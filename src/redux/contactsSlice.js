@@ -10,14 +10,11 @@ const contactsSlice = createSlice({
     error: null    
   },
   extraReducers: {
-    [fetchContacts.fulfilled]: (state, { payload }) => {
-      return {
-        ...state,
-        items: [...payload],
-        isLoading: false,
-        error: null,
-      };
-    },
+     [fetchContacts.fulfilled](state, action) {    
+      console.log(state);
+      state.isLoading = false;
+      state.items = action.payload;    
+  },
     [fetchContacts.pending]: state => {
       return { ...state, isLoading: true };
     },

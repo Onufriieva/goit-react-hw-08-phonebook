@@ -3,12 +3,13 @@ import UserMenu from "../userMenu/UserMenu";
 import Navigation from "../navigation/Navigation";
 import AuthNav from "../authNav/AuthNav";
 import { Header, BoxHeader, TitleBox } from "./AppBarStyled";
-import { getIsLogin } from "redux/selectors";
+import { getIsLoged } from "redux/selectors";
 
 
 
 export default function AppBar() {
-    const isLogin = useSelector(getIsLogin)
+    const isLogin = useSelector(getIsLoged)
+    console.log(isLogin)
     return(
         <Header>
             <BoxHeader>

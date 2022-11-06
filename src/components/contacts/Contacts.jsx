@@ -8,7 +8,6 @@ import { SecondaryTitleBox, ListContacts, ListItem, ButtonDel } from './Contacts
 
 
 const Contacts = () => {
-
   const filter = useSelector(getFilter);
   const items = useSelector(getItems);
   const dispatch = useDispatch();
@@ -19,26 +18,36 @@ const Contacts = () => {
 
   const contactFiltering = () => { 
     const normalizeFilter = filter.toLowerCase();
+    if(items.length !== 0){
     return items.filter(item => item.name.toLowerCase().includes(normalizeFilter))
+    } else if(items.length === 0){
+      return;
+    }
   };
 
   const filteredContacts = contactFiltering(); 
-
-
+  
+ 
   return (
-    <>
-    <SecondaryTitleBox>Contacts</SecondaryTitleBox>
+    <> 
     <Form/>
-    <ListContacts>
-      {filteredContacts.map(({ id, name, phone }) => 
+    <SecondaryTitleBox>Contacts</SecondaryTitleBox>
+    {items.length !== 0 && (
+        <ListContacts>
+          {
+     filteredContacts.map(({ id, name, number }) => 
         <ListItem key={id}>
-          {name}: {phone}
+          {name}: {number}
           <ButtonDel type='button' onClick={() => {
                 dispatch(deleteContact(id));
               }}>Delete</ButtonDel> 
         </ListItem>)
-      }        
-    </ListContacts>
+      }  
+        </ListContacts>
+      )}
+      {items.length === 0 && (
+        <p>There`s no contacts yet</p>
+      )}
     <Filter/>
     </>
   )   

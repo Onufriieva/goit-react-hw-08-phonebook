@@ -22,8 +22,7 @@ export default function Navigation() {
 
                
             </NavList>
-        </Nav>
-            
+        </Nav>    
         
 
     )

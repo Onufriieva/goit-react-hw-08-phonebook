@@ -15,13 +15,15 @@ const token = {
 };
 
 
-
 export const register = createAsyncThunk(
     'auth/register',
     async (credentials, { rejectWithValue }) => {
         try {
+            console.log(credentials)
             const { data } = await axios.post('/users/signup', credentials);
+            console.log(data)
             token.set(data.token);
+            console.log(token)
             return data; 
         } catch (error) {
           return rejectWithValue(error);
@@ -33,9 +35,12 @@ export const register = createAsyncThunk(
 export const login = createAsyncThunk(
     'auth/login',
     async (credentials, { rejectWithValue }) => {
+        console.log(credentials)
         try {
             const { data } = await axios.post('/users/login', credentials);
+            console.log(data)
             token.set(data.token);
+            console.log(token)
             return data;
         } catch (error) {
             return rejectWithValue(error);
@@ -57,13 +62,12 @@ export const logout = createAsyncThunk(
 );
 
 
-
-
 export const fetchContacts = createAsyncThunk(
     "contacts/fetchAll",
     async(_, thunkApi) => {
         try {
             const { data } = await axios.get('/contacts/');
+            console.log(data)  
             return data;
         } catch (error) {
             return thunkApi.rejectWithValue(error);
@@ -72,17 +76,18 @@ export const fetchContacts = createAsyncThunk(
 );
 
 
-
 export const addContact = createAsyncThunk(
-    "contacts/addContact",
-    async({ name, number }, { rejectWithValue }) => {
+    "contacts/add",
+    async(data, {rejectWithValue}) => {
         try {
-            const result = await axios.post('/contacts/', {name, number});
+            console.log(data)
+            const result = await axios.post(`https://connections-api.herokuapp.com/contacts`, data);
+            console.log(result)
             return result;
         } catch (error) {
             return rejectWithValue(error);
         }
-    }
+    },
 );
 
 

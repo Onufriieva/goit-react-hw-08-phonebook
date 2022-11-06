@@ -13,7 +13,7 @@ const numberInputId = nanoid(8)
 const Form = () => {
 
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
 
   const items = useSelector(getItems);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Form = () => {
     
     switch(name) {
       case "number":
-        return setPhone(value); 
+        return setNumber(value); 
       case "name":
         return setName(value); 
       default:
@@ -34,13 +34,13 @@ const Form = () => {
   
   const chekingContacts = () => {
     const findContact = items.find((item) => item.name === name);
-    const findNumber = items.find((item) => item.phone === phone);
+    const findNumber = items.find((item) => item.number === number);
 
     if (findContact) { 
       alert(`${name} is already in contacts`);      
     } 
       else if (findNumber) { 
-      alert(`${phone} is already in contacts`);      
+      alert(`${number} is already in contacts`);      
     }             
   };
 
@@ -48,9 +48,9 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     chekingContacts();
-    dispatch(addContact({name, phone}));
+    dispatch(addContact({name, number}));
     setName('');
-    setPhone('');
+    setNumber('');
     };
 
 
@@ -78,7 +78,7 @@ const Form = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             onChange={handleInputChange}
-            value={phone}  
+            value={number}  
             id={numberInputId}            
           />  
         </LabelBox>
