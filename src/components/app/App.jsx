@@ -9,6 +9,8 @@ import Layout from "components/layout/Layout";
 import { DivBox } from "./AppStyled";
 import { getIsLoading } from "redux/selectors";
 import { refresh } from "redux/operations";
+import PrivateRoute from "components/PrivateRoute";
+import PublicRoute from "components/PublicRoute";
 
 const Register = lazy(() => import('../../pages/register/RegisterPage'));
 const Login = lazy(() => import('../../pages/login/LoginPage'));
@@ -28,14 +30,17 @@ export function App () {
         <AppBar />
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index="/" element={<HomePage/>} />
-            <Route path="/register" element={<Register/>} />
-            <Route path="/login" element={<Login/>} />
-            <Route path="/contacts" element={<Contacts/>} />
+            <Route element={<PublicRoute/>}>
+              <Route index="/" element={<HomePage/>} />
+              <Route path="/register" element={<Register/>} />
+              <Route path="/login" element={<Login/>} />
+            </Route>
+            <Route element={<PrivateRoute/>}>
+              <Route path="/contacts" element={<Contacts/>} />
+            </Route>           
             <Route path="*" element={<NotFoundPage />} />  
           </Route>      
         </Routes>    
-        <HomePage/>       
         {loader && <Loader/>}
       </DivBox>
     );

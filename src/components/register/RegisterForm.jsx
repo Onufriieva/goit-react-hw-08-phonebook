@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+// import { Navigate } from "react-router-dom";
 import { nanoid } from 'nanoid';
 import { register } from 'redux/operations';
+// import { getIsLoged } from '../../redux/selectors';
 import { DivBox, TitleBox, FormBox, InputBox, Button } from "./RegisterFormStyled";
 
 
 export default function RegisterForm() {
     const dispatch = useDispatch();
+    // const isLoged = useSelector(getIsLoged);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -41,8 +44,10 @@ export default function RegisterForm() {
         setPassword('');
         };
 
-
-
+        // if (isLoged) {
+        //   return <Navigate to="/contacts"/>
+        // }
+    
     return(
 
         <DivBox>

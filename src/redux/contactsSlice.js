@@ -29,7 +29,7 @@ const contactsSlice = createSlice({
         isLoading: false,
         error: null,
       };
-    },
+        },
     [addContact.pending]: state => {
       return { ...state, isLoading: true };
     },

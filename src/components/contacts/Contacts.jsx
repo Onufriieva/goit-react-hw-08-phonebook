@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+// import { Navigate } from "react-router-dom";
 import { fetchContacts, deleteContact } from '../../redux/operations';
 import { getFilter, getItems } from '../../redux/selectors';
 import Filter from 'components/filter/Filter';
@@ -10,6 +11,7 @@ import { SecondaryTitleBox, ListContacts, ListItem, ButtonDel } from './Contacts
 const Contacts = () => {
   const filter = useSelector(getFilter);
   const items = useSelector(getItems);
+  // const isLoged = useSelector(getIsLoged);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -26,6 +28,10 @@ const Contacts = () => {
   };
 
   const filteredContacts = contactFiltering(); 
+
+  // if (!isLoged) {
+  //   return <Navigate to="/login"/>
+  // };
   
  
   return (

@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from 'nanoid';
 import { login } from 'redux/operations';
+// import { getIsLoged } from '../../redux/selectors';
+// import { Navigate } from "react-router-dom";
 
 
 
@@ -9,6 +11,7 @@ export default function LoginForm() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    // const isLoged = useSelector(getIsLoged);
 
     const emailInputId = nanoid();
     const passwordInputId = nanoid();
@@ -27,6 +30,7 @@ export default function LoginForm() {
         }
       };
 
+ 
 
     const handleSubmit = (e) => {
         e.preventDefault();        
@@ -36,18 +40,21 @@ export default function LoginForm() {
     };
 
 
+    // if (isLoged) {
+    //   return <Navigate to="/contacts"/>
+    // }
+
 
     return(
 
         <div>
-            <h1>Login page</h1>
+             <h1>Please log in first</h1>
             <form onSubmit={handleSubmit}>
                 <label>Email
                     <input
                       type="email"
                       name="email"
-                      // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                      // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+                      title="For example user@mail.com"
                       required
                       onChange={handleInputChange}
                       value={email}    
@@ -59,8 +66,6 @@ export default function LoginForm() {
                     <input
                       type="password"
                       name="password"
-                      // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-                      // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                       required
                       onChange={handleInputChange}
                       value={password}  

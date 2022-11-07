@@ -1,11 +1,12 @@
-// import { TitleBox } from "./HomePageStyled";
+import { TitleBox } from "./HomePageStyled";
 
 export default function HomePage() {
+
     return(
         <div>
-            {/* <TitleBox>
-                Hello World 
-            </TitleBox> */}
+            <TitleBox>
+                My phonebook
+            </TitleBox>
         </div>
     )
 };
