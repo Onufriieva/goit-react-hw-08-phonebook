@@ -7,7 +7,7 @@ import AppBar from "../appBar/AppBar";
 import HomePage from "../homePage/HomePage";
 import Layout from "components/layout/Layout";
 import { DivBox } from "./AppStyled";
-import { getIsLoading } from "redux/selectors";
+import { getIsLoading, getIsRefreshing } from "redux/selectors";
 import { refresh } from "redux/operations";
 import PrivateRoute from "components/PrivateRoute";
 import PublicRoute from "components/PublicRoute";
@@ -17,7 +17,8 @@ const Login = lazy(() => import('../../pages/login/LoginPage'));
 const Contacts = lazy(() => import('../../pages/contacts/ContactsPage'));
 
 export function App () {
-  const loader = useSelector(getIsLoading)
+  const loader = useSelector(getIsLoading);
+  const isRefresh = useSelector(getIsRefreshing);
   const dispatch = useDispatch();
 
 
@@ -25,13 +26,18 @@ export function App () {
     dispatch(refresh());
   }, [dispatch]);
 
+  if(isRefresh) {
+    return <p>Refresh</p>
+  }
+
     return (
       <DivBox>
+   
         <AppBar />
         <Routes>
           <Route path="/" element={<Layout />}>
+          <Route index="/" element={<HomePage/>} />
             <Route element={<PublicRoute/>}>
-              <Route index="/" element={<HomePage/>} />
               <Route path="/register" element={<Register/>} />
               <Route path="/login" element={<Login/>} />
             </Route>
@@ -40,7 +46,9 @@ export function App () {
             </Route>           
             <Route path="*" element={<NotFoundPage />} />  
           </Route>      
-        </Routes>    
+        </Routes>
+        
+         
         {loader && <Loader/>}
       </DivBox>
     );

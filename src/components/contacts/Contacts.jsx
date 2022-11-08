@@ -5,7 +5,7 @@ import { fetchContacts, deleteContact } from '../../redux/operations';
 import { getFilter, getItems } from '../../redux/selectors';
 import Filter from 'components/filter/Filter';
 import Form from '../form/Form'
-import { SecondaryTitleBox, ListContacts, ListItem, ButtonDel } from './ContactsStyled';
+import { SecondaryTitleBox, ListContacts, ListItem, ButtonDel, DivContainer } from './ContactsStyled';
 
 
 const Contacts = () => {
@@ -35,7 +35,7 @@ const Contacts = () => {
   
  
   return (
-    <> 
+    <DivContainer > 
     <Form/>
     <SecondaryTitleBox>Contacts</SecondaryTitleBox>
     {items.length !== 0 && (
@@ -55,7 +55,7 @@ const Contacts = () => {
         <p>There`s no contacts yet</p>
       )}
     <Filter/>
-    </>
+    </DivContainer >
   )   
 }
 

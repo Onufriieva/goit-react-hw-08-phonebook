@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const DivBox = styled.div`
 display: flex;
 align-items: center;
+margin-left: auto;
 `
 
 export const Button = styled.button`
@@ -12,7 +13,7 @@ export const Button = styled.button`
     min-width: 101px;
    
   
-    border-radius: 4px;   
+    border-radius: 8px;   
     border: 0;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
 
@@ -34,14 +35,14 @@ export const Button = styled.button`
 
    &:hover,
    &:focus {
-       color: var(--button-link-color);
+       background-color: rgba(24, 140, 232, 1);
+       color: #fff;
     }
-}
 `;
 
 export const Mail = styled.p`
 margin: 0px;
-margin-right: 8px;
-font-size: 16px;
+margin-right: 16px;
+font-size: 20px;
 font-weight: 700;
 `

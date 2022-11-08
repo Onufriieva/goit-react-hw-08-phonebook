@@ -8,6 +8,8 @@ export default function UserMenu() {
     const dispatch = useDispatch();
     const email = useSelector(getUserEmail)
 
+
+
     return(
         <DivBox>
             <Mail>{email}</Mail>

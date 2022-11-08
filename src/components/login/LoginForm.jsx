@@ -2,16 +2,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { nanoid } from 'nanoid';
 import { login } from 'redux/operations';
-// import { getIsLoged } from '../../redux/selectors';
-// import { Navigate } from "react-router-dom";
-
+import { Form, Input, Button, Label, Div, Title } from "./LoginFormStyled";
 
 
 export default function LoginForm() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    // const isLoged = useSelector(getIsLoged);
 
     const emailInputId = nanoid();
     const passwordInputId = nanoid();
@@ -40,41 +37,39 @@ export default function LoginForm() {
     };
 
 
-    // if (isLoged) {
-    //   return <Navigate to="/contacts"/>
-    // }
-
 
     return(
 
-        <div>
-             <h1>Please log in first</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Email
-                    <input
+        <Div>
+             <Title>Please log in </Title>
+            <Form onSubmit={handleSubmit}>
+                <Label>Email
+                    <Input
                       type="email"
                       name="email"
                       title="For example user@mail.com"
                       required
                       onChange={handleInputChange}
                       value={email}    
-                      id={emailInputId}          
+                      id={emailInputId}   
+                      placeholder="user@mail.com"        
                     /> 
-                </label>
+                </Label>
           
-                <label>Password
-                    <input
+                <Label>Password
+                    <Input
                       type="password"
                       name="password"
                       required
                       onChange={handleInputChange}
                       value={password}  
-                      id={passwordInputId}            
+                      id={passwordInputId}  
+                            
                     />  
-                </label>
-              <button type="submit">Login</button>
-            </form>
-        </div>
+                </Label>
+              <Button type="submit">Login</Button>
+            </Form>
+        </Div>
 
     )
 }

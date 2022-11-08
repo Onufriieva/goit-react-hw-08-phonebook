@@ -7,4 +7,5 @@ export const getUserName = state => state.auth.user.name;
 export const getUserEmail = state => state.auth.user.email;
 export const getIsLoged = state => state.auth.isLoged;
 export const getUser = state => state.auth.user;
+export const getIsRefreshing = state => state.auth.isRefreshing;
 

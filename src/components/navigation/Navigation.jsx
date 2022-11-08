@@ -10,13 +10,15 @@ export default function Navigation() {
             <NavList>
                 <ListItem>
                     <LinkStyled to={backHrefLink}>
-                        <Button type='button'>Home</Button>
+                        {/* <Button type='button'>Home</Button> */}
+                        Home
                     </LinkStyled>
                 </ListItem>
 
                 <ListItem>
                     <LinkStyled to="/contacts">
-                        <Button type='button'>Contacts</Button>
+                        {/* <Button type='button'>Contacts</Button> */}
+                        Contacts
                     </LinkStyled>
                 </ListItem>
 

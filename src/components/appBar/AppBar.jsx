@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import UserMenu from "../userMenu/UserMenu";
 import Navigation from "../navigation/Navigation";
 import AuthNav from "../authNav/AuthNav";
-import { Header, BoxHeader, TitleBox } from "./AppBarStyled";
+import { Header, BoxHeader, TitleBox, Logo } from "./AppBarStyled";
 import { getIsLoged } from "redux/selectors";
 
 
@@ -14,7 +14,7 @@ export default function AppBar() {
     return(
         <Header>
             <BoxHeader>
-            <TitleBox>Phonebook</TitleBox>
+            <Logo to="/" end>PhoneBook</Logo>
                <Navigation />
                {isLogin ?   <UserMenu/> :   <AuthNav/>}            
             </BoxHeader>

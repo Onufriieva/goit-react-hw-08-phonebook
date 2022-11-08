@@ -9,6 +9,7 @@ const initialState = {
     token: null,
     isLoged: false,
     isRefreshing: false,
+    isLogout: true,
     error: '',
 };
 
@@ -34,7 +35,7 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoged = true;
-      },    
+        },    
       [login.rejected](state, action) {
         state.error = action.payload;
       },  

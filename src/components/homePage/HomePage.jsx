@@ -1,12 +1,12 @@
-import { TitleBox } from "./HomePageStyled";
+import { TitleBox, DivContainer } from "./HomePageStyled";
 
 export default function HomePage() {
 
     return(
-        <div>
+        <DivContainer>
             <TitleBox>
                 My phonebook
             </TitleBox>
-        </div>
+        </DivContainer>
     )
 };
