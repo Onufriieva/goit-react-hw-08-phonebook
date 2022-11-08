@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { Nav, NavList, ListItem, Button, LinkStyled } from "./NavigationStyled"
+import { Nav, NavList, ListItem, LinkStyled } from "./NavigationStyled"
 
 export default function Navigation() {
     const location = useLocation();
