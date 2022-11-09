@@ -76,3 +76,9 @@ outline: transparent;
 &:focus-within {
 border-color: var(--button-link-color);
 `;
+
+export const ErrorText = styled.p`
+font-size: 24px;
+font-weight: 700;
+color: red;
+`;

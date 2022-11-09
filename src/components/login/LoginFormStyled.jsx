@@ -12,7 +12,13 @@ color: #343545;
 font-size: 32px;
 line-height: 1.17;
 letter-spacing: 0.01em;
-`
+`;
+
+export const ErrorText = styled.p`
+font-size: 24px;
+font-weight: 700;
+color: red;
+`;
 
 export const Form = styled.form`
 display: flex;

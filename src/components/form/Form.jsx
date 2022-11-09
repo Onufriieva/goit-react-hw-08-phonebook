@@ -1,4 +1,6 @@
 import { nanoid } from 'nanoid';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/operations';
@@ -32,22 +34,51 @@ const Form = () => {
   };
 
   
-  const chekingContacts = () => {
-    const findContact = items.find((item) => item.name === name);
-    const findNumber = items.find((item) => item.number === number);
+  // const chekingContacts = () => {
+  //   const findContact = items.find((item) => item.name === name);
+  //   const findNumber = items.find((item) => item.number === number);
 
-    if (findContact) { 
-      alert(`${name} is already in contacts`);      
-    } 
-      else if (findNumber) { 
-      alert(`${number} is already in contacts`);      
-    }             
-  };
+  //   if (findContact) { 
+  //     toast.warn(`${name} is already in contacts`, 
+  //     {
+  //       dragable: true,
+  //       position: toast.POSITION.TOP_RIGHT,
+  //       autoClose: 2000,
+  //     }
+  //     );
+  //     setName('');
+  //    return; 
+  //   } 
+  //     else if (findNumber) { 
+  //       toast.warn(`${number} is already in contacts`, 
+  //       {
+  //         dragable: true,
+  //         position: toast.POSITION.TOP_RIGHT,
+  //         autoClose: 2000,
+  //       });  
+  //       setNumber('');  
+  //     return;    
+  //   }             
+  // };
+  
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    chekingContacts();
+    const findContact = items.find((item) => item.name === name);
+    if (findContact) { 
+      toast.warn(`${name} is already in contacts`, 
+      {
+        dragable: true,
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 2000,
+      }
+      );
+      setName('');
+      setNumber('');
+     return; 
+    } 
+    // chekingContacts();
     dispatch(addContact({name, number}));
     setName('');
     setNumber('');
@@ -85,6 +116,7 @@ const Form = () => {
           
         <ButtonAdd type="submit">Add contact</ButtonAdd>
       </form>
+      <ToastContainer style={{ fontSize: '20px' }} />
     </FormBox>  
   )
 }

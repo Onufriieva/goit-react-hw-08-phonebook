@@ -1,12 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from 'nanoid';
 import { login } from 'redux/operations';
-import { Form, Input, Button, Label, Div, Title } from "./LoginFormStyled";
+import { getErrorAuth } from "redux/selectors";
+import { Form, Input, Button, Label, Div, Title, ErrorText } from "./LoginFormStyled";
 
 
 export default function LoginForm() {
     const dispatch = useDispatch();
+    const isError = useSelector(getErrorAuth)
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
@@ -42,6 +44,7 @@ export default function LoginForm() {
 
         <Div>
              <Title>Please log in </Title>
+            {isError && <ErrorText>Oops, something went wrong, try again!</ErrorText>}
             <Form onSubmit={handleSubmit}>
                 <Label>Email
                     <Input

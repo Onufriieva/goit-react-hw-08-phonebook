@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-// import { Navigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from 'nanoid';
 import { register } from 'redux/operations';
-// import { getIsLoged } from '../../redux/selectors';
-import { DivBox, TitleBox, FormBox, InputBox, Button } from "./RegisterFormStyled";
+import { getErrorAuth } from '../../redux/selectors';
+import { DivBox, TitleBox, FormBox, InputBox, Button, ErrorText } from "./RegisterFormStyled";
 
 
 export default function RegisterForm() {
     const dispatch = useDispatch();
-    // const isLoged = useSelector(getIsLoged);
+    const isError = useSelector(getErrorAuth);
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -20,7 +19,7 @@ export default function RegisterForm() {
 
     
     const handleInputChange = (e) => {
-        const {name, value} = e.target;  
+        const {name, value} = e.target;   
         
         switch(name) {
           case "name":
@@ -47,11 +46,16 @@ export default function RegisterForm() {
         // if (isLoged) {
         //   return <Navigate to="/contacts"/>
         // }
+
+
     
     return(
 
         <DivBox>
             <TitleBox>Registration page</TitleBox>
+            {isError && <ErrorText>Oops, something went wrong, try again!</ErrorText>}
+
+        
             <FormBox onSubmit={handleSubmit}>
                 <label>
                   <InputBox
