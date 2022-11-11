@@ -4,7 +4,7 @@ export const Div = styled.div`
 text-align: center;
 width: 400px;
 margin-left: auto;
-margin-right: auto;
+margin-right: auto; 
 `;
 
 export const Title = styled.h1`
@@ -59,11 +59,11 @@ border-color: blue;
 export const Button = styled.button`
    
     display: inline-block;
-    padding: 5px 5px;
+    padding: 10px 5px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 16px;
-    min-width: 101px;
+    min-width: 151px;
    
   
     border-radius: 8px;   

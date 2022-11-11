@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { nanoid } from 'nanoid';
 import { register } from 'redux/operations';
 import { getErrorAuth } from '../../redux/selectors';
-import { DivBox, TitleBox, FormBox, InputBox, Button, ErrorText } from "./RegisterFormStyled";
+import { DivBox, TitleBox, FormBox, InputBox, Button, ErrorText, LabelBox } from "./RegisterFormStyled";
 
 
 export default function RegisterForm() {
@@ -47,7 +47,7 @@ export default function RegisterForm() {
         //   return <Navigate to="/contacts"/>
         // }
 
-
+ 
     
     return(
 
@@ -57,7 +57,7 @@ export default function RegisterForm() {
 
         
             <FormBox onSubmit={handleSubmit}>
-                <label>
+                <LabelBox> Name
                   <InputBox
                     type="text"
                     name="name"
@@ -69,9 +69,9 @@ export default function RegisterForm() {
                     id={nameInputId}   
                     placeholder="Name"         
                 /> 
-                </label>
+                </LabelBox>
           
-                <label>
+                <LabelBox>Email
                     <InputBox
                       type="email"
                       name="email"
@@ -81,9 +81,9 @@ export default function RegisterForm() {
                       id={emailInputId}  
                       placeholder="E-mail"        
                     /> 
-                </label>
+                </LabelBox>
           
-                <label>
+                <LabelBox>Password
                     <InputBox
                       type="password"
                       name="password"
@@ -93,8 +93,8 @@ export default function RegisterForm() {
                       id={passwordInputId} 
                       placeholder="Password"             
                     />  
-                </label>
-              <Button type="submit">Ok</Button>
+                </LabelBox>
+              <Button type="submit">Register</Button>
             </FormBox>
         </DivBox>
 

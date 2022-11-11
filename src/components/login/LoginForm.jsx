@@ -10,7 +10,7 @@ export default function LoginForm() {
     const dispatch = useDispatch();
     const isError = useSelector(getErrorAuth)
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [password, setPassword] = useState(''); 
 
     const emailInputId = nanoid();
     const passwordInputId = nanoid();
@@ -67,7 +67,7 @@ export default function LoginForm() {
                       onChange={handleInputChange}
                       value={password}  
                       id={passwordInputId}  
-                            
+                      placeholder="Password"
                     />  
                 </Label>
               <Button type="submit">Login</Button>
